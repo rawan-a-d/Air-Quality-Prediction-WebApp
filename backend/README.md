@@ -7,26 +7,20 @@ It makes use of a trained AI model ([Air Quality Prediction Prediction AI](https
 1. Activate environment
 
 ```bash
-	source .venv/Scripts/activate
+source .venv/Scripts/activate
 ```
 
-2. Install packages in requirements.txt
+2. Create environment variables (must be run everytime the terminal is reopened)
 
 ```bash
-	pip3 install -r requirements.txt
+export FLASK_APP=application.py
+export FLASK_DEBUG=true
 ```
 
-3. Create environment variables (must be run everytime the terminal is reopened)
+3. Run Flask app
 
 ```bash
-	export FLASK_APP=application.py
-	export FLASK_DEBUG=true
-```
-
-4. Run Flask app
-
-```bash
-	flask run
+flask run
 ```
 
 ## First Time Setup:
@@ -34,44 +28,38 @@ It makes use of a trained AI model ([Air Quality Prediction Prediction AI](https
 1. Create a virtual environment to isolate dependencies for this app
 
 ```bash
-	python -m venv .venv
+python -m venv .venv
 ```
 
 2. Activate environment
 
 ```bash
-	source .venv/Scripts/activate
+source .venv/Scripts/activate
 ```
 
-3. Install libraries
+3. Install packages in requirements.txt
 
 ```bash
-	pip3 install flask_cors
+pip3 install -r requirements.txt
 ```
 
-3. Put all requirments (packages downloaded) in text file
+4. Create environment variables
 
 ```bash
-	pip3 freeze > requirements.txt
+export FLASK_APP=application.py
+export FLASK_DEBUG=true
 ```
 
-4. Create file
+5. Run Flask app
 
 ```bash
-	touch application.py
+flask run
 ```
 
-5. Create environment variables
+## Update packages in requirements.txt file:
 
 ```bash
-	export FLASK_APP=application.py
-	export FLASK_DEBUG=true
-```
-
-6. Run Flask app
-
-```bash
-	flask run
+pip3 freeze > requirements.txt
 ```
 
 ## Resources:
