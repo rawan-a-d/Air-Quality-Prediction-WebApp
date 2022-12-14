@@ -1,16 +1,21 @@
-/* main card style */
+/* Card */
 .main-card {
 	width: 40%;
-	margin: 50px auto 0px auto;
+	margin: 25px auto 0px auto;
 }
 
-/* add shadow to the main card */
+/* add shadow to the card */
 .main-card:not([class*="mat-elevation-z"]) {
 	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1),
 		0 1px 3px 0 rgba(0, 0, 0, 1);
 }
 
-/* form field style */
+/* card title */
+.title {
+	text-align: center;
+}
+
+/* form field */
 mat-form-field {
 	width: 80%;
 	margin: 0 10%;

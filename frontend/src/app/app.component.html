@@ -1,11 +1,12 @@
 <!-- adding card -->
 <mat-card class="main-card">
 	<mat-card-content class="card-content">
+		<h1 class="title">Air Quality Prediction in Eindhoven</h1>
 		<form #form="ngForm">
 			<p>
 				<!-- date picker -->
 				<mat-form-field appearance="fill">
-					<mat-label>Enter date</mat-label>
+					<mat-label>Date</mat-label>
 					<input matInput [matDatepicker]="picker" [(ngModel)]="model.date" name="date">
 					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 					<mat-datepicker #picker></mat-datepicker>
