@@ -2,9 +2,8 @@
 
 <div mat-dialog-content>
     <!-- get the air quality level -->
+    <img class="air-quality-image" [src]="image" />
     <p class="air-quality-level">
         {{data.airQualityLevel}}
-        <img class="air-quality-image" [src]="image"/>
     </p>
 </div>
-
