@@ -1,0 +1,10 @@
+<h1 mat-dialog-title class="air-quality-prediction-title">Air Quality Level in area *** on date ***</h1>
+
+<div mat-dialog-content>
+    <!-- get the air quality level -->
+    <p class="air-quality-level">
+        {{data.airQualityLevel}}
+        <img class="air-quality-image" [src]="image"/>
+    </p>
+</div>
+

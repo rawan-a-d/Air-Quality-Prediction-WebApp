@@ -1,5 +1,5 @@
 /* main card style */
-.main-card{
+.main-card {
     width: 50%;
     height: 85%;
     display: block;
@@ -16,7 +16,7 @@
 }
 
 /* form field style */
-mat-form-field{
+mat-form-field {
     width: 80%;
     margin: 0 10%;
 }
@@ -32,6 +32,6 @@ input.field-number {
 }
 
 /* predict button style */
-button{
+button {
     margin: 0 10%;
 }

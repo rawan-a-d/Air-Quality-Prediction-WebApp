@@ -1,10 +1,17 @@
-import {Component, Injectable} from '@angular/core';
-import {DateAdapter} from '@angular/material/core';
-import {
-  MatDateRangeSelectionStrategy,
-  DateRange,
-  MAT_DATE_RANGE_SELECTION_STRATEGY,
-} from '@angular/material/datepicker';
+import { Component, Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AirQualityPredictionDialog } from './air-quality-prediction-dialog/air-quality-prediction-dialog.component';
+
+export interface DialogData {
+  airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
+}
+
+// import {DateAdapter} from '@angular/material/core';
+// import {
+//   MatDateRangeSelectionStrategy,
+//   DateRange,
+//   MAT_DATE_RANGE_SELECTION_STRATEGY,
+// } from '@angular/material/datepicker';
 
 //should be moved to interface folder later
 interface ZipCode {
@@ -52,6 +59,7 @@ interface ZipCode {
 })
 
 export class AppComponent {
+
   zipcodes: ZipCode[] = [
     {value: '5611', viewValue: '5611'},
     {value: '5612', viewValue: '5612'},
@@ -87,4 +95,24 @@ export class AppComponent {
     {value: '5657', viewValue: '5657'},
     {value: '5658', viewValue: '5658'},
   ];
+
+  className: string = '';
+  airQualityLevel: string = 'Unhealthy for Sensitive Groups';
+
+  constructor(public dialog: MatDialog) {}
+  
+  ngOnInit(): void {
+    // get the air quality levels
+    this.className = this.airQualityLevel.split(' ').join('-').toLowerCase();
+    console.log('Class Name:' + this.className)
+  }
+
+  openDialog() {
+    this.dialog.open(AirQualityPredictionDialog, {
+      data: {
+        airQualityLevel: this.airQualityLevel,
+      },
+     panelClass: this.className,
+    });
+  }
 }

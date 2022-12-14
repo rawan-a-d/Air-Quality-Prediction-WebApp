@@ -1,0 +1,38 @@
+/* give different colors based on the air quality level */
+.good .mat-dialog-container {
+    background-color: #ABD162;
+}
+
+.moderate .mat-dialog-container {
+    background-color: #F7D460;
+}
+
+.unhealthy-for-sensitive-groups .mat-dialog-container {
+    background-color: #FC9956;
+}
+
+.unhealthy .mat-dialog-container {
+    background-color: #F6676B;
+}
+
+.very-unhealthy .mat-dialog-container {
+    background-color: #A37DB8;
+}
+
+.hazardous .mat-dialog-container {
+    background-color: #A07684;
+}
+
+/* air quality level text style */
+.air-quality-level{
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+}
+
+/* air quality  level title style */
+.air-quality-prediction-title{
+    color: rgb(96, 95, 95);
+    text-align: center;
+    /* font-weight: bolder; */
+}
