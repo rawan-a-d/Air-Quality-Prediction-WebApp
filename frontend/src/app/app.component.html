@@ -1,70 +1,76 @@
-<!-- adding cart -->
+<!-- adding card -->
 <mat-card class="main-card">
-  <mat-card-content class="card-content">
+	<mat-card-content class="card-content">
+		<form #form="ngForm">
+			<p>
+				<!-- date picker -->
+				<mat-form-field appearance="fill">
+					<mat-label>Enter date</mat-label>
+					<input matInput [matDatepicker]="picker" [(ngModel)]="model.date" name="date">
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+			</p>
 
-    <p>
-      <!-- date picker -->
-      <mat-form-field appearance="fill">
-        <mat-label>Enter date</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </p>
+			<p>
+				<!-- drop down list for zip codes -->
+				<mat-form-field appearance="fill">
+					<mat-label>Zip code</mat-label>
+					<mat-select [(ngModel)]="model.zipcode" name="zipcode">
+						<mat-option *ngFor="let code of zipcodes" [value]="code.value">
+							{{code.viewValue}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</p>
 
-    <p>
-      <!-- drop down list for zip codes -->
-      <mat-form-field appearance="fill">
-        <mat-label>ZipCode</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let code of zipcodes" [value]="code.value">
-            {{code.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </p>
+			<!-- number of people input -->
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>People number</mat-label>
+					<input matInput type="number" class="field-number" placeholder="0" min="0" [(ngModel)]="model.peopleNumber"
+						name="peopleNumber">
+				</mat-form-field>
+			</p>
 
-    <!-- number of people input -->
-    <p>
-      <mat-form-field appearance="fill" >
-        <mat-label>People number</mat-label>
-        <input matInput type="number" class="field-number" placeholder="0" min="0">
-      </mat-form-field>
-    </p>
+			<!-- wind speed input-->
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Wind speed</mat-label>
+					<input matInput type="number" class="field-number" placeholder="0" min="0" [(ngModel)]="model.windSpeed"
+						name="windSpeed">
+				</mat-form-field>
+			</p>
 
-    <!-- wind speed input-->
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Wind speed</mat-label>
-        <input matInput type="number" class="field-number" placeholder="0" min="0">
-      </mat-form-field>
-    </p>
+			<!-- wind direction input -->
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Wind direction</mat-label>
+					<input matInput type="number" class="field-number" placeholder="0" min="0" [(ngModel)]="model.windDirection"
+						name="windDirection">
+				</mat-form-field>
+			</p>
 
-    <!-- wind direction input -->
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Wind direction</mat-label>
-        <input matInput type="number" class="field-number" placeholder="0" min="0">
-      </mat-form-field>
-    </p>
+			<!-- sun radiation -->
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Sun radiation</mat-label>
+					<input matInput type="number" class="field-number" placeholder="0" min="0" [(ngModel)]="model.sunRadiation"
+						name="sunRadiation">
+				</mat-form-field>
+			</p>
 
-    <!-- sun radiation -->
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Sun radiation</mat-label>
-        <input matInput type="number" class="field-number" placeholder="0" min="0">
-      </mat-form-field>
-    </p>
+			<!-- boundary layer height -->
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Boundary layer height</mat-label>
+					<input matInput type="number" class="field-number" placeholder="0" min="0"
+						[(ngModel)]="model.boundaryLayerHeight" name="boundaryLayerHeight">
+				</mat-form-field>
+			</p>
 
-    <!-- boundary layer height -->
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Boundary layer height</mat-label>
-        <input matInput type="number" class="field-number" placeholder="0" min="0">
-      </mat-form-field>
-    </p>
+			<button mat-raised-button color="primary" (click)="getPrediction(); form.reset()">Predict</button>
 
-    <button mat-raised-button color="primary" (click)="openDialog()">Predict</button>
-
-  </mat-card-content>
+		</form>
+	</mat-card-content>
 </mat-card>

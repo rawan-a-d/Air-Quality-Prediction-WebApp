@@ -3,47 +3,93 @@
 	background-color: #abd162;
 }
 
+.good .mat-dialog-container .air-quality-level .air-quality-level-number {
+	color: #577c00;
+}
+
 .moderate .mat-dialog-container {
 	background-color: #f7d460;
+}
+
+.moderate .mat-dialog-container .air-quality-level .air-quality-level-number {
+	color: #9f811e;
 }
 
 .unhealthy-for-sensitive-groups .mat-dialog-container {
 	background-color: #fc9956;
 }
 
+.unhealthy-for-sensitive-groups
+	.mat-dialog-container
+	.air-quality-level
+	.air-quality-level-number {
+	color: #965c34;
+}
+
 .unhealthy .mat-dialog-container {
 	background-color: #f6676b;
+}
+
+.unhealthy .mat-dialog-container .air-quality-level .air-quality-level-number {
+	color: #a73538;
 }
 
 .very-unhealthy .mat-dialog-container {
 	background-color: #a37db8;
 }
 
+.very-unhealthy
+	.mat-dialog-container
+	.air-quality-level
+	.air-quality-level-number {
+	color: #603479;
+}
+
 .hazardous .mat-dialog-container {
 	background-color: #a07684;
+}
+
+.hazardous .mat-dialog-container .air-quality-level .air-quality-level-number {
+	color: #74394d;
 }
 
 /* Air quality level and image */
 .mat-dialog-content {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 /* air quality level title */
-.air-quality-prediction-title {
-	color: rgb(96, 95, 95);
+.air-quality-prediction-title.mat-dialog-title {
+	color: white;
+	font-weight: 600;
+	letter-spacing: 1px;
 	text-align: center;
-	/* font-weight: bolder; */
+	font-family: "Karla", sans-serif;
+}
+
+.date {
+	display: block;
 }
 
 /* air quality level text */
 .air-quality-level {
-	font-size: 1.5em;
+	font-size: 1.7em;
 	color: white;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	line-height: 34px;
+	font-family: "Karla", sans-serif;
 }
 
 /* air quality image */
 .air-quality-image {
 	width: 120px;
+}
+
+.air-quality-level-number {
+	font-size: 1.8em;
+	font-family: "Merriweather", serif;
 }
