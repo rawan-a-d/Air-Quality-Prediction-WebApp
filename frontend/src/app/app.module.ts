@@ -16,27 +16,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AirQualityPredictionDialog } from './air-quality-prediction-dialog/air-quality-prediction-dialog.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AirQualityPredictionDialog
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		AirQualityPredictionDialog
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MatCardModule,
+		MatSelectModule,
+		MatDatepickerModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatNativeDateModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatButtonModule,
+		MatIconModule,
+		MatDialogModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
 
