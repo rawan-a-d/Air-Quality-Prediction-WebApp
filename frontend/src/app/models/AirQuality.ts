@@ -8,5 +8,4 @@ export class AirQuality {
 		public sunRadiation: number,
 		public boundaryLayerHeight: number,
 	) { }
-
 }
