@@ -22,25 +22,24 @@ export class AirQualityPredictionDialog implements OnInit {
 
 	// get image name based on the air quality level
 	getImageName() {
+		this.image = 'assets/images/';
 		if (this.data.airQualityLevel == 'Good') {
-			this.image = 'assets/images/Good.png';
+			this.image += 'Good.png';
 		}
 		else if (this.data.airQualityLevel == 'Moderate') {
-			this.image = 'assets/images/Moderate.png';
+			this.image += 'Moderate.png';
 		}
 		else if (this.data.airQualityLevel == 'Unhealthy for Sensitive Groups') {
-			this.image = 'assets/images/Unhealthy1.png';
+			this.image += 'Unhealthy1.png';
 		}
 		else if (this.data.airQualityLevel == 'Unhealthy') {
-			this.image = 'assets/images/Unhealthy2.png';
+			this.image += 'Unhealthy2.png';
 		}
 		else if (this.data.airQualityLevel == 'Very Unhealthy') {
-			this.image = 'assets/images/VeryUnhealthy.png';
+			this.image += 'VeryUnhealthy.png';
 		}
 		else if (this.data.airQualityLevel == 'Hazardous') {
-			this.image = 'assets/images/Hazardous.png';
+			this.image += 'Hazardous.png';
 		}
 	}
-
-
 }
