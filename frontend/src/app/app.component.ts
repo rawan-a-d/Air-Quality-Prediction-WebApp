@@ -2,6 +2,7 @@ import { Component, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AirQualityPredictionDialog } from './air-quality-prediction-dialog/air-quality-prediction-dialog.component';
 import { AirQuality } from './models/AirQuality';
+import { AppService } from './services/app.service';
 
 export interface DialogData {
 	airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
@@ -63,6 +64,7 @@ interface ZipCode {
 })
 
 export class AppComponent {
+	showSpinner = false;
 
 	zipcodes: ZipCode[] = [
 		{ value: '5611', viewValue: '5611' },
@@ -103,7 +105,7 @@ export class AppComponent {
 	model = new AirQuality(new Date(), '', 0, 0, 0, 0, 0);
 	//model = new AirQuality();
 
-	constructor(public dialog: MatDialog) { }
+	constructor(public dialog: MatDialog, private appService: AppService) { }
 
 	ngOnInit(): void {
 	}
@@ -127,6 +129,27 @@ export class AppComponent {
 		var airQualityLevel = 'Hazardous';
 		var airQualityLevelNumerical = 7.9;
 
-		this.openDialog(airQualityLevel, airQualityLevelNumerical);
+		// show spinner
+		this.showSpinner = true;
+
+		// get prediction
+		this.appService.getPrediction(this.model)
+			.subscribe({
+				next: (data) => {
+					// hide spinner
+					this.showSpinner = false;
+
+					// open dialog
+					this.openDialog(airQualityLevel, airQualityLevelNumerical);
+				},
+				error: (e) => {
+					// hide spinner
+					this.showSpinner = false;
+					console.log(e);
+				},
+				complete: () => {
+					console.log('Completed')
+				}
+			})
 	}
 }

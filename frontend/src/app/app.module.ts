@@ -10,10 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AirQualityPredictionDialog } from './air-quality-prediction-dialog/air-quality-prediction-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [
@@ -23,17 +25,19 @@ import { AirQualityPredictionDialog } from './air-quality-prediction-dialog/air-
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
+		FormsModule,
+		ReactiveFormsModule,
+		HttpClientModule,
 		MatCardModule,
 		MatSelectModule,
 		MatDatepickerModule,
-		FormsModule,
-		ReactiveFormsModule,
 		MatNativeDateModule,
 		MatFormFieldModule,
 		MatInputModule,
 		MatButtonModule,
 		MatIconModule,
-		MatDialogModule
+		MatDialogModule,
+		MatProgressSpinnerModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
