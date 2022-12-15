@@ -2,9 +2,9 @@
 	<span class="date">on {{data.date | date: 'longDate'}}</span>
 </h1>
 
-<div mat-dialog-content>
+<div mat-dialog-content class="headline-1">
 	<!-- get the air quality level -->
-	<img class="air-quality-image" [src]="image" />
+	<img class="air-quality-image" [src]="image" class="headline-1" />
 	<div class="air-quality-level">
 		<p class="air-quality-category">{{data.airQualityLevel}}</p>
 		<p class="air-quality-level-number">{{data.airQualityLevelNumerical}}</p>

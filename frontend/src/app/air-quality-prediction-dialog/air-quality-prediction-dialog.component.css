@@ -61,7 +61,7 @@
 }
 
 /* air quality level title */
-.air-quality-prediction-title.mat-dialog-title {
+h1.air-quality-prediction-title.mat-dialog-title {
 	color: white;
 	font-weight: 600;
 	letter-spacing: 1px;

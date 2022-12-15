@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AirQualityPredictionDialog } from './air-quality-prediction-dialog/air-quality-prediction-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
 	declarations: [
@@ -39,7 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
 		MatDialogModule,
 		MatProgressSpinnerModule
 	],
-	providers: [],
+	providers: [DatePipe],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AirQualityPredictionDialog } from './air-quality-prediction-dialog/air-quality-prediction-dialog.component';
 import { AirQuality } from './models/AirQuality';
@@ -105,7 +107,7 @@ export class AppComponent {
 	model = new AirQuality(new Date(), '', 0, 0, 0, 0, 0);
 	//model = new AirQuality();
 
-	constructor(public dialog: MatDialog, private appService: AppService) { }
+	constructor(public dialog: MatDialog, private appService: AppService, private datePipe: DatePipe) { }
 
 	ngOnInit(): void {
 	}
@@ -125,30 +127,35 @@ export class AppComponent {
 		});
 	}
 
-	getPrediction() {
-		var airQualityLevel = 'Hazardous';
+	getPrediction(form: NgForm) {
+		//airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
+		var airQualityLevel = 'Very Unhealthy';
 		var airQualityLevelNumerical = 7.9;
+		var formattedDate: string | null = this.datePipe.transform(this.model.date, 'yyyy-MM-dd');
 
 		// show spinner
 		this.showSpinner = true;
 
+		//this.openDialog(airQualityLevel, airQualityLevelNumerical);
+
 		// get prediction
-		this.appService.getPrediction(this.model)
+		this.appService.getPrediction(this.model, formattedDate)
 			.subscribe({
 				next: (data) => {
-					// hide spinner
-					this.showSpinner = false;
-
 					// open dialog
 					this.openDialog(airQualityLevel, airQualityLevelNumerical);
 				},
 				error: (e) => {
-					// hide spinner
-					this.showSpinner = false;
 					console.log(e);
 				},
 				complete: () => {
-					console.log('Completed')
+					// hide spinner
+					this.showSpinner = false;
+
+					// reset form
+					form.reset();
+
+					console.log('Completed');
 				}
 			})
 	}
