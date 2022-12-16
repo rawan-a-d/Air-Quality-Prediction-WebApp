@@ -66,3 +66,4 @@ pip3 freeze > requirements.txt
 
 https://www.youtube.com/watch?v=qbLc5a9jdXo
 https://stackoverflow.com/questions/34122949/working-outside-of-application-context-flask
+http://mpld3.github.io/index.html

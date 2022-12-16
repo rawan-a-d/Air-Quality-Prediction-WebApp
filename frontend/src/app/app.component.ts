@@ -129,7 +129,9 @@ export class AppComponent {
 
 	getPrediction(form: NgForm) {
 		//airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
-		var airQualityLevel = 'Very Unhealthy';
+		//var airQualityLevel = 'Good';
+		var airQualityLevel = 'Hazardous';
+
 		var airQualityLevelNumerical = 7.9;
 		var formattedDate: string | null = this.datePipe.transform(this.model.date, 'yyyy-MM-dd');
 
@@ -159,4 +161,5 @@ export class AppComponent {
 				}
 			})
 	}
+
 }
