@@ -1,0 +1,56 @@
+<!-- Heading -->
+<h1 id="heading">People vs. Fine Particulate Matter (PM2.5) in Eindhoven</h1>
+
+<!-- Map -->
+<div id="map-container">
+	<!-- map -->
+	<igx-geographic-map #map id="map" zoomable="true" backgroyndContent="openStreetMap">
+	</igx-geographic-map>
+
+	<!-- color canvas -->
+	<div id=" color-canvas">
+		<p>PM2.5</p>
+		<canvas class="color" #canvas></canvas>
+	</div>
+
+	<!-- tooltips -->
+	<ng-template let-series="series" let-item="item" #cityTooltipTemplate>
+		<div>
+			<span [style.color]="series.brush">
+				<b>{{item.area}}</b>
+			</span>
+			<br />
+			<span>
+				People Number: {{item.peopleNumber}}
+			</span>
+			<br />
+			<span>
+				PM2.5: {{item.pollution}}
+			</span>
+		</div>
+	</ng-template>
+
+	<!-- Legend -->
+	<div class='legend'>
+		<div class='legend-title'>People vs. Fine Particulate Matter</div>
+		<div class='legend-scale'>
+			<ul class='legend-labels'>
+				<li class="legend-color">
+					<span id="outer-circle" class="circle">
+						<span id="inner-circle" class="circle">
+							<span id="most-inner-circle" class="circle"></span>
+						</span>
+					</span>
+					<span class="legend-text">Number of People</span>
+				</li>
+
+				<li class="legend-size">
+					<span id="circle1" class="circle"></span>
+					<span id="circle2" class="circle"></span>
+					<span id="circle3" class="circle"></span>
+					<span class="legend-text">Pollution</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

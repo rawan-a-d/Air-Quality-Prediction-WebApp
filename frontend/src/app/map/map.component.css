@@ -1,0 +1,122 @@
+/* Page heading */
+#heading {
+	text-align: center;
+}
+
+/* Map */
+/* map container */
+#map-container {
+	position: relative;
+	display: flex;
+	column-gap: 15px;
+	justify-content: center;
+	align-items: center;
+	/*width: 58%;*/
+	/*margin: 0 21%;*/
+}
+
+/* map */
+#map {
+	width: 700px;
+	height: 500px;
+}
+
+/* Color canvas */
+#color-canvas {
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+}
+
+canvas {
+	width: 30px;
+	height: 60vh;
+}
+
+/* Legend */
+.legend {
+	position: absolute;
+	left: 25.4%;
+	bottom: 15px;
+	padding: 7px 10px 7px 10px;
+	background-color: rgba(0, 0, 0, 0.6);
+	color: white;
+}
+
+/* legend title */
+.legend .legend-title {
+	margin-bottom: 5px;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+
+/* legend list */
+.legend .legend-scale ul {
+	margin: 2px;
+	padding: 0;
+	float: left;
+	list-style: none;
+}
+
+/* legend list item */
+.legend .legend-scale ul li {
+	font-size: 0.7em;
+	list-style: none;
+	line-height: 20px;
+	margin-bottom: 28px;
+}
+
+/* legend span */
+.legend ul.legend-labels li span {
+	display: block;
+	float: left;
+	margin-right: 5px;
+}
+
+/* legend circles */
+.circle {
+	border: none;
+	border-radius: 50%;
+}
+
+.legend-color #outer-circle {
+	height: 20px;
+	width: 20px;
+	background-color: #211edb;
+}
+
+.legend-color #inner-circle {
+	height: 15px;
+	width: 15px;
+	background-color: #db1313;
+}
+
+.legend-color #most-inner-circle {
+	height: 10px;
+	width: 10px;
+	background-color: #8cdb1e;
+}
+
+.legend-size #circle1,
+.legend-size #circle2,
+.legend-size #circle3 {
+	height: 15px;
+	width: 15px;
+}
+
+.legend-size #circle1 {
+	background-color: #211edb;
+}
+
+.legend-size #circle2 {
+	background-color: #db1313;
+}
+
+.legend-size #circle3 {
+	background-color: #8cdb1e;
+}
+
+/* legend text */
+.legend-text {
+	float: right;
+}
