@@ -98,6 +98,5 @@
 				}
 			}
 		}
-	},
-	"defaultProject": "Air-Quality-Prediction_frontend"
+  }
 }
