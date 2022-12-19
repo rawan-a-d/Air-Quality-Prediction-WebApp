@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../app.component';
+import { DialogData } from '../air-quality-prediction-card/air-quality-prediction-card.component';
 
 @Component({
 	selector: 'app-air-quality-prediction-dialog',

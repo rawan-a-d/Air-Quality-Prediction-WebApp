@@ -11,6 +11,8 @@ import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatTabsModule } from '@angular/material/tabs';
+
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AirQualityPredictionDialog } from "./air-quality-prediction-dialog/air-quality-prediction-dialog.component";
@@ -19,12 +21,14 @@ import { DatePipe } from "@angular/common";
 import { MapComponent } from "./map/map.component";
 import { IgxDataChartInteractivityModule } from "igniteui-angular-charts";
 import { IgxGeographicMapModule } from "igniteui-angular-maps";
+import { AirQualityPredictionCardComponent } from './air-quality-prediction-card/air-quality-prediction-card.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		AirQualityPredictionDialog,
-		MapComponent
+		MapComponent,
+  		AirQualityPredictionCardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -42,6 +46,7 @@ import { IgxGeographicMapModule } from "igniteui-angular-maps";
 		MatIconModule,
 		MatDialogModule,
 		MatProgressSpinnerModule,
+		MatTabsModule,
 		IgxDataChartInteractivityModule,
 		IgxGeographicMapModule
 	],
