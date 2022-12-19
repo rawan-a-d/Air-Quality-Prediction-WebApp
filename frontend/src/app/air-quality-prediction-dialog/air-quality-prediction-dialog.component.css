@@ -1,67 +1,85 @@
 /* Give different colors based on the air quality level */
-.good .mat-dialog-container {
+.good .mat-mdc-dialog-container .mdc-dialog__surface {
 	background-color: #abd162;
 }
 
-.good .mat-dialog-container .air-quality-level .air-quality-level-number {
+.good
+	.mat-mdc-dialog-container
+	.mdc-dialog__surface
+	.air-quality-level
+	.air-quality-level-number {
 	color: #577c00;
 }
 
-.moderate .mat-dialog-container {
+.moderate .mat-mdc-dialog-container .mdc-dialog__surface {
 	background-color: #f7d460;
 }
 
-.moderate .mat-dialog-container .air-quality-level .air-quality-level-number {
+.moderate
+	.mat-mdc-dialog-container
+	.mdc-dialog__surface
+	.air-quality-level
+	.air-quality-level-number {
 	color: #9f811e;
 }
 
-.unhealthy-for-sensitive-groups .mat-dialog-container {
+.unhealthy-for-sensitive-groups .mat-mdc-dialog-container .mdc-dialog__surface {
 	background-color: #fc9956;
 }
 
 .unhealthy-for-sensitive-groups
-	.mat-dialog-container
+	.mat-mdc-dialog-container
+	.mdc-dialog__surface
 	.air-quality-level
 	.air-quality-level-number {
 	color: #965c34;
 }
 
-.unhealthy .mat-dialog-container {
+.unhealthy .mat-mdc-dialog-container .mdc-dialog__surface {
 	background-color: #f6676b;
 }
 
-.unhealthy .mat-dialog-container .air-quality-level .air-quality-level-number {
+.unhealthy
+	.mat-mdc-dialog-container
+	.mdc-dialog__surface
+	.air-quality-level
+	.air-quality-level-number {
 	color: #a73538;
 }
 
-.very-unhealthy .mat-dialog-container {
+.very-unhealthy .mat-mdc-dialog-container .mdc-dialog__surface {
 	background-color: #a37db8;
 }
 
 .very-unhealthy
-	.mat-dialog-container
+	.mat-mdc-dialog-container
+	.mdc-dialog__surface
 	.air-quality-level
 	.air-quality-level-number {
 	color: #603479;
 }
 
-.hazardous .mat-dialog-container {
+.hazardous .mat-mdc-dialog-container .mdc-dialog__surface {
 	background-color: #a07684;
 }
 
-.hazardous .mat-dialog-container .air-quality-level .air-quality-level-number {
+.hazardous
+	.mat-mdc-dialog-container
+	.mdc-dialog__surface
+	.air-quality-level
+	.air-quality-level-number {
 	color: #74394d;
 }
 
 /* Air quality level and image */
-.mat-dialog-content {
+.mat-mdc-dialog-content {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 }
 
 /* air quality level title */
-h1.air-quality-prediction-title.mat-dialog-title {
+h1.air-quality-prediction-title.mat-mdc-dialog-title {
 	color: white;
 	font-weight: 600;
 	letter-spacing: 1px;
