@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AppService } from '../services/app.service';
 import { ColorsService } from '../services/colors.service';
 import { MapItem } from '../models/MapItem';
@@ -43,7 +43,7 @@ export class MapComponent implements OnInit {
 		this.appSerivce.getMap(date)
 			.subscribe(data => {
 				this.mapItems = <MapItem[]>data;
-				console.log(this.mapItems)
+				console.log(this.mapItems);
 
 				this.setUpMap();
 			})
@@ -52,7 +52,7 @@ export class MapComponent implements OnInit {
 	// clear map
 	clearMap() {
 		this.mapItems = [];
-		this.map.series.clear()
+		this.map.series.clear();
 	}
 
 	// setup map
@@ -73,7 +73,7 @@ export class MapComponent implements OnInit {
 		this.mapItems.forEach(element => {
 			// set color
 			var colorPercentage = this.normalizeDataBetweenRange(min, max, element.pollution, 1);
-			var colors = this.colorsService.evaluate_cmap(colorPercentage, 'plasma', true)
+			var colors = this.colorsService.evaluate_cmap(colorPercentage, 'plasma', true);
 			var colorRgb = 'rgb(' + colors[0] + ',' + colors[1] + ',' + colors[2] + ')';
 
 			// set size (between 0 and 10)
