@@ -17,8 +17,6 @@ export class AirQualityPredictionDialog implements OnInit {
 	}
 
 	ngOnInit(): void {
-
-		console.log("DATA ", this.data)
 	}
 
 	// get image name based on the air quality level

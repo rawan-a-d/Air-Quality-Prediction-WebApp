@@ -12,6 +12,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -28,7 +29,7 @@ import { AirQualityPredictionCardComponent } from './air-quality-prediction-card
 		AppComponent,
 		AirQualityPredictionDialog,
 		MapComponent,
-  		AirQualityPredictionCardComponent
+		AirQualityPredictionCardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -47,6 +48,7 @@ import { AirQualityPredictionCardComponent } from './air-quality-prediction-card
 		MatDialogModule,
 		MatProgressSpinnerModule,
 		MatTabsModule,
+		MatSnackBarModule,
 		IgxDataChartInteractivityModule,
 		IgxGeographicMapModule
 	],

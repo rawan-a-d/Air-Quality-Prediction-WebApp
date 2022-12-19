@@ -1,10 +1,11 @@
 # setup flask
-from flask import Flask
+from flask import Flask, Response
 import pickle
 from flask_cors import CORS
 import re
 from flask import request
 from graph_helper import GraphHelper
+
 # as per recommendation from @freylis, compile once only
 CLEANR = re.compile('<.*?>') 
 
@@ -39,5 +40,8 @@ def map():
 	date = request.args.get('date')
 
 	result = graph_helper.get_pollution_vs_people_by_area(date)
+
+	if(not result):
+		return Response("No data was found for the specified date", status=400)
 
 	return result

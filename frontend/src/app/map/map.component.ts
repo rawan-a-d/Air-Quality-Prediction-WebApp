@@ -5,6 +5,7 @@ import { MapItem } from '../models/MapItem';
 import { IgxGeographicMapComponent, IgxGeographicSymbolSeriesComponent } from 'igniteui-angular-maps';
 import { MarkerType } from 'igniteui-angular-charts';
 import { DatePipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-map',
@@ -27,7 +28,8 @@ export class MapComponent implements OnInit {
 
 	constructor(private colorsService: ColorsService,
 		private appSerivce: AppService,
-		private datePipe: DatePipe) {
+		private datePipe: DatePipe,
+		private _snackBar: MatSnackBar) {
 	}
 
 	ngOnInit(): void {
@@ -41,11 +43,20 @@ export class MapComponent implements OnInit {
 	getMapItems(date: string) {
 		// get map items
 		this.appSerivce.getMap(date)
-			.subscribe(data => {
-				this.mapItems = <MapItem[]>data;
-				console.log(this.mapItems);
+			.subscribe({
+				next: (data) => {
+					this.mapItems = <MapItem[]>data;
+					console.log(this.mapItems);
 
-				this.setUpMap();
+					this.setUpMap();
+				},
+				error: (e) => {
+					console.log(e.error);
+					this.openSnackBar(e.error, "Close");
+				},
+				complete: () => {
+
+				}
 			})
 	}
 
@@ -125,5 +136,9 @@ export class MapComponent implements OnInit {
 		this.selectedDate = this.datePipe.transform(event.value, 'yyyy-MM-dd');
 
 		this.getMapItems(this.selectedDate);
+	}
+
+	openSnackBar(message: string, action: string) {
+		this._snackBar.open(message, action);
 	}
 }
