@@ -1,6 +1,7 @@
 /* Page heading */
 #heading {
 	text-align: center;
+	padding-top: 60px;
 }
 
 /* Map */
@@ -36,8 +37,8 @@ canvas {
 /* Legend */
 .legend {
 	position: absolute;
-	left: 25.4%;
-	bottom: 15px;
+	left: 26%;
+	bottom: 12px;
 	padding: 7px 10px 7px 10px;
 	background-color: rgba(0, 0, 0, 0.6);
 	color: white;
@@ -82,19 +83,19 @@ canvas {
 .legend-color #outer-circle {
 	height: 20px;
 	width: 20px;
-	background-color: #211edb;
+	background-color: #380499;
 }
 
 .legend-color #inner-circle {
 	height: 15px;
 	width: 15px;
-	background-color: #db1313;
+	background-color: #c65385;
 }
 
 .legend-color #most-inner-circle {
 	height: 10px;
 	width: 10px;
-	background-color: #8cdb1e;
+	background-color: #fdb22e;
 }
 
 .legend-size #circle1,
@@ -105,15 +106,15 @@ canvas {
 }
 
 .legend-size #circle1 {
-	background-color: #211edb;
+	background-color: #380499;
 }
 
 .legend-size #circle2 {
-	background-color: #db1313;
+	background-color: #c65385;
 }
 
 .legend-size #circle3 {
-	background-color: #8cdb1e;
+	background-color: #fdb22e;
 }
 
 /* legend text */

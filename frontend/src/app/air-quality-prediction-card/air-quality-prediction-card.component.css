@@ -1,7 +1,7 @@
 /* Card */
 .main-card {
 	width: 40%;
-	margin: 25px auto 0px auto;
+	margin: 25px auto;
 }
 
 /* add shadow to the card */
@@ -9,6 +9,13 @@
 	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1),
 		0 1px 3px 0 rgba(0, 0, 0, 1);
 }
+/*
+.mat-elevation-z4,
+.mat-mdc-elevation-specific.mat-elevation-z4,
+.mat-elevation-z4,
+.mat-mdc-elevation-specific.mat-elevation-z4 {
+	box-shadow: none;
+}*/
 
 /* card title */
 .title {
