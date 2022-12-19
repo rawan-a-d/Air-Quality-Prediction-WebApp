@@ -11,12 +11,13 @@ CLEANR = re.compile('<.*?>')
 app = Flask(__name__)
 CORS(app)
 
+# graph helper instance
+graph_helper = GraphHelper()
+
 #loaded_model = pickle.load(open('air_quality_predictor.pkl', 'rb'))
 
 @app.route('/')
 def index():
-	#return this.httpClient.get(`${this.url}?date=${airQuality.date}&zipcode=${airQuality.zipcode}&peopleNumber=${airQuality.peopleNumber}&windSpeed=${airQuality.windSpeed}&windDirection=${airQuality.windDirection}&sunRadiation=${airQuality.sunRadiation}&boundaryLayerHeight=${airQuality.boundaryLayerHeight}`)
-
 	date = request.args.get('date')
 	zipcode = request.args.get('zipcode')
 	people_number = request.args.get('peopleNumber')
@@ -37,6 +38,6 @@ def index():
 def map():
 	date = request.args.get('date')
 
-	result = GraphHelper.get_pollution_vs_people_by_area(date)
+	result = graph_helper.get_pollution_vs_people_by_area(date)
 
 	return result

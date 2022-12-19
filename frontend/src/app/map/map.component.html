@@ -1,5 +1,14 @@
+<div id="date-picker-container">
+	<mat-form-field color="primary" appearance="fill">
+		<mat-label>Pick date</mat-label>
+		<input matInput [matDatepicker]="picker" (dateChange)="datePicked($event)">
+		<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-datepicker #picker color="primary"></mat-datepicker>
+	</mat-form-field>
+</div>
+
 <!-- Heading -->
-<h1 id="heading">People vs. Fine Particulate Matter (PM2.5) in Eindhoven</h1>
+<h1 id="heading">People vs. Fine Particulate Matter (PM2.5) in Eindhoven on {{selectedDate}}</h1>
 
 <!-- Map -->
 <div id="map-container">

@@ -4,13 +4,14 @@ import { ColorsService } from '../services/colors.service';
 import { MapItem } from '../models/MapItem';
 import { IgxGeographicMapComponent, IgxGeographicSymbolSeriesComponent } from 'igniteui-angular-maps';
 import { MarkerType } from 'igniteui-angular-charts';
+import { DatePipe } from '@angular/common';
 
 @Component({
 	selector: 'app-map',
 	templateUrl: './map.component.html',
 	styleUrls: ['./map.component.css']
 })
-export class MapComponent implements AfterViewInit, OnInit {
+export class MapComponent implements OnInit {
 	@ViewChild("map")
 	public map: IgxGeographicMapComponent;
 
@@ -22,22 +23,36 @@ export class MapComponent implements AfterViewInit, OnInit {
 
 	mapItems: MapItem[] = [];
 
+	selectedDate = "2021-09-25";
+
 	constructor(private colorsService: ColorsService,
-		private appSerivce: AppService) {
+		private appSerivce: AppService,
+		private datePipe: DatePipe) {
 	}
 
 	ngOnInit(): void {
+		//var date = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+
 		// get map items
-		this.appSerivce.getMap("2021-09-25")
+		this.getMapItems(this.selectedDate);
+	}
+
+	// get map items
+	getMapItems(date: string) {
+		// get map items
+		this.appSerivce.getMap(date)
 			.subscribe(data => {
 				this.mapItems = <MapItem[]>data;
+				console.log(this.mapItems)
 
 				this.setUpMap();
 			})
 	}
 
-	ngAfterViewInit(): void {
-
+	// clear map
+	clearMap() {
+		this.mapItems = [];
+		this.map.series.clear()
 	}
 
 	// setup map
@@ -99,5 +114,16 @@ export class MapComponent implements AfterViewInit, OnInit {
 	// normalize data between two numbers (0 and maxNumber)
 	normalizeDataBetweenRange(min: number, max: number, value: number, maxNumber: number) {
 		return (value - min) / (max - min) * maxNumber;
+	}
+
+	// date picked
+	datePicked(event) {
+		// clear map
+		this.clearMap();
+
+		// get selected date
+		this.selectedDate = this.datePipe.transform(event.value, 'yyyy-MM-dd');
+
+		this.getMapItems(this.selectedDate);
 	}
 }

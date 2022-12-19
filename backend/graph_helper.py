@@ -4,7 +4,12 @@ import pgeocode
 nomi = pgeocode.Nominatim('nl')
 
 class GraphHelper:
-	def get_merged_dataframe():
+	# Initialize class
+	def __init__(self):
+		self.dataframe = self.get_merged_dataframe()
+
+	# Merge datasets
+	def get_merged_dataframe(self):
 		# read zichtop dataset csv file
 		df_zichtop = pd.read_csv('data/zichtop.csv', 
 							parse_dates=['date'])
@@ -39,10 +44,9 @@ class GraphHelper:
 
 		return df_zichtop_air_pollution
 
-
-	@staticmethod
-	def get_pollution_vs_people_by_area(date):
-		df_zichtop_air_pollution = GraphHelper.get_merged_dataframe()
+	# Get pollution vs people by area on a specific date
+	def get_pollution_vs_people_by_area(self, date):
+		df_zichtop_air_pollution = self.dataframe
 
 		# get specific columns
 		people_per_hour = df_zichtop_air_pollution.iloc[:, [0, 3, 4, 5, 11, 12]].copy()
