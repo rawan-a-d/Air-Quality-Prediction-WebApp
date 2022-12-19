@@ -7,10 +7,6 @@ export class ColorsService {
 
 	constructor() { }
 
-	/*
-Add contents of data.js here:
-*/
-
 	data = {
 		Accent: {
 			interpolate: false,
