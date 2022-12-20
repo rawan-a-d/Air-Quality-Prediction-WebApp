@@ -95,9 +95,7 @@ h1.air-quality-prediction-title.mat-mdc-dialog-title {
 	font-size: 1.7em;
 	color: white;
 	text-align: center;
-	display: flex;
-	flex-direction: column;
-	line-height: 34px;
+	/*line-height: 34px;*/
 }
 
 /* air quality image */
