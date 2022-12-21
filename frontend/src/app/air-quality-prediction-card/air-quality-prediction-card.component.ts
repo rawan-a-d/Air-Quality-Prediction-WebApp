@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AirQualityPredictionDialog } from '../air-quality-prediction-dialog/air-quality-prediction-dialog.component';
 import { AirQuality } from '../models/AirQuality';
+import { AirQualityPrediction } from '../models/AirQualityPrediction';
 import { AppService } from '../services/app.service';
 
 export interface DialogData {
@@ -98,9 +99,10 @@ export class AirQualityPredictionCardComponent {
 	];
 
 	model = new AirQuality(new Date(), '', 0, 0, 0, 0, 0);
-	//model = new AirQuality();
 
-	constructor(public dialog: MatDialog, private appService: AppService, private datePipe: DatePipe) { }
+	constructor(public dialog: MatDialog,
+		private appService: AppService,
+		private datePipe: DatePipe) { }
 
 	ngOnInit(): void {
 	}
@@ -122,22 +124,22 @@ export class AirQualityPredictionCardComponent {
 
 	getPrediction(form: NgForm) {
 		//airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
-		var airQualityLevel = 'Good';
-
-		var airQualityLevelNumerical = 7.9;
+		//var airQualityLevel = 'Good';
+		//var airQualityLevelNumerical = 7.9;
 		var formattedDate: string | null = this.datePipe.transform(this.model.date, 'yyyy-MM-dd');
 
 		// show spinner
 		this.showSpinner = true;
 
-		this.openDialog(airQualityLevel, airQualityLevelNumerical);
+		//this.openDialog(airQualityLevel, airQualityLevelNumerical);
 
 		// get prediction
 		this.appService.getPrediction(this.model, formattedDate)
 			.subscribe({
-				next: (data) => {
+				next: (data: AirQualityPrediction) => {
+					console.log(data);
 					// open dialog
-					this.openDialog(airQualityLevel, airQualityLevelNumerical);
+					this.openDialog(data.airQualityLevel, data.airQualityLevelNumerical);
 				},
 				error: (e) => {
 					console.log(e);

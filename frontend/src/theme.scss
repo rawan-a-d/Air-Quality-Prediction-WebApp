@@ -11,13 +11,6 @@ $app-warn: mat.define-palette(mat.$red-palette, 500);
 // Define custom typography
 $app-typography: mat.define-typography-config(
 	$font-family: '"Karla", "Helvetica Neue", sans-serif',
-	$headline-1: mat.define-typography-level(25px, 25px, 500),
-	$headline-2: mat.define-typography-level(22px, 22px, 500),
-	$headline-3: mat.define-typography-level(20px, 20px, 500),
-	$headline-4: mat.define-typography-level(18px, 18px, 500),
-	$body-1: mat.define-typography-level(15px, 16px, 400),
-	$body-2: mat.define-typography-level(14px, 14px, 500),
-	$button: mat.define-typography-level(16px, 16px, 400),
 );
 
 $app-theme: mat.define-light-theme(
@@ -25,6 +18,7 @@ $app-theme: mat.define-light-theme(
 		color: (
 			primary: $app-primary,
 			accent: $app-accent,
+			warn: $app-warn,
 		),
 		typography: $app-typography,
 		density: 0,

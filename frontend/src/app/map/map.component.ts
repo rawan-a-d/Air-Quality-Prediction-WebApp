@@ -33,8 +33,6 @@ export class MapComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		//var date = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
-
 		// get map items
 		this.getMapItems(this.selectedDate);
 	}
@@ -138,6 +136,7 @@ export class MapComponent implements OnInit {
 		this.getMapItems(this.selectedDate);
 	}
 
+	// open snackbar
 	openSnackBar(message: string, action: string) {
 		this._snackBar.open(message, action);
 	}
