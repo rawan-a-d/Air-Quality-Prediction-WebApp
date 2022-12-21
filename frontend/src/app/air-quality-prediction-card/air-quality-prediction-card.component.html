@@ -13,7 +13,8 @@
 				<!-- date picker -->
 				<mat-form-field appearance="fill">
 					<mat-label>Date</mat-label>
-					<input matInput [matDatepicker]="picker" [(ngModel)]="model.date" name="date">
+					<input matInput [matDatepicker]="picker" [(ngModel)]="model.date" 
+						name="date" (dateChange)="loadWeatherData($event)">
 					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 					<mat-datepicker #picker></mat-datepicker>
 				</mat-form-field>
@@ -36,7 +37,8 @@
 				<mat-form-field appearance="fill">
 					<mat-label>People number</mat-label>
 					<input matInput type="number" class="field-number" placeholder="0" min="0"
-						[(ngModel)]="model.peopleNumber" name="peopleNumber">
+					value={{peopleNumber}}>
+					<!-- [(ngModel)]="model.peopleNumber" name="peopleNumber" -->
 				</mat-form-field>
 			</p>
 
@@ -45,7 +47,7 @@
 				<mat-form-field appearance="fill">
 					<mat-label>Wind speed</mat-label>
 					<input matInput type="number" class="field-number" placeholder="0" min="0"
-						[(ngModel)]="model.windSpeed" name="windSpeed">
+						[(ngModel)]="meteoData.windSpeed" name="windSpeed">
 				</mat-form-field>
 			</p>
 
@@ -54,7 +56,7 @@
 				<mat-form-field appearance="fill">
 					<mat-label>Wind direction</mat-label>
 					<input matInput type="number" class="field-number" placeholder="0" min="0"
-						[(ngModel)]="model.windDirection" name="windDirection">
+						[(ngModel)]="meteoData.windDirection" name="windDirection">
 				</mat-form-field>
 			</p>
 
@@ -63,7 +65,7 @@
 				<mat-form-field appearance="fill">
 					<mat-label>Sun radiation</mat-label>
 					<input matInput type="number" class="field-number" placeholder="0" min="0"
-						[(ngModel)]="model.sunRadiation" name="sunRadiation">
+						[(ngModel)]="meteoData.sunRadiation" name="sunRadiation">
 				</mat-form-field>
 			</p>
 
@@ -72,7 +74,8 @@
 				<mat-form-field appearance="fill">
 					<mat-label>Boundary layer height</mat-label>
 					<input matInput type="number" class="field-number" placeholder="0" min="0"
-						[(ngModel)]="model.boundaryLayerHeight" name="boundaryLayerHeight">
+						value={{boundaryLayerHeight}}>
+						<!-- [(ngModel)]="model.boundaryLayerHeight" name="boundaryLayerHeight"  -->
 				</mat-form-field>
 			</p>
 

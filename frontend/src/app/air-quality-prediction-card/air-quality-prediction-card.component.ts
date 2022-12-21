@@ -1,10 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { Component, Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
 import { AirQualityPredictionDialog } from '../air-quality-prediction-dialog/air-quality-prediction-dialog.component';
 import { AirQuality } from '../models/AirQuality';
+import { MeteoData } from '../models/MeteoData';
 import { AppService } from '../services/app.service';
+import { WeatherService } from '../services/weather.service';
 
 export interface DialogData {
 	airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
@@ -99,10 +102,24 @@ export class AirQualityPredictionCardComponent {
 
 	model = new AirQuality(new Date(), '', 0, 0, 0, 0, 0);
 	//model = new AirQuality();
+	peopleNumber: number = 216; //hard coded
+	boundaryLayerHeight: number = 629.35; //hard coded
+	meteoData = new MeteoData ( 0, 0, 0);
 
-	constructor(public dialog: MatDialog, private appService: AppService, private datePipe: DatePipe) { }
+	constructor(public dialog: MatDialog, 
+				private appService: AppService, 
+				private weatherService: WeatherService,
+				private datePipe: DatePipe) { }
 
 	ngOnInit(): void {
+	}
+
+	loadWeatherData(event) {
+		var formattedDate: string | null = this.datePipe.transform(event.value, 'yyyy-MM-dd')
+		this.weatherService.LoadWeatherAPI(formattedDate).subscribe(
+		res => {
+		  this.meteoData = new MeteoData(res.daily.windspeed_10m_max, res.daily.winddirection_10m_dominant, res.daily.shortwave_radiation_sum);
+		})
 	}
 
 	openDialog(airQualityLevel: string, airQualityLevelNumerical: number) {
