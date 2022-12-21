@@ -11,7 +11,7 @@ export class AppService {
 	constructor(private httpClient: HttpClient) { }
 
 	getPrediction(airQuality: AirQuality, formattedDate: string | null) {
-		return this.httpClient.get(`${this.url}?date=${formattedDate}&zipcode=${airQuality.zipcode}&peopleNumber=${airQuality.peopleNumber}&windSpeed=${airQuality.windSpeed}&windDirection=${airQuality.windDirection}&sunRadiation=${airQuality.sunRadiation}&boundaryLayerHeight=${airQuality.boundaryLayerHeight}`)
+		return this.httpClient.get(`${this.url}?date=${formattedDate}&zipcode=${airQuality.zipcode}&peopleNumber=${airQuality.peopleNumber}&windSpeed=${airQuality.meteoData.windSpeed}&windDirection=${airQuality.meteoData.windDirection}&sunRadiation=${airQuality.meteoData.sunRadiation}&boundaryLayerHeight=${airQuality.meteoData.boundaryLayerHeight}`)
 			.pipe(
 				map(
 					response => response

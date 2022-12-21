@@ -101,10 +101,9 @@ export class AirQualityPredictionCardComponent {
 		{ value: '5658', viewValue: '5658' },
 	];
 
-	model = new AirQuality(new Date(), '', 0, 0, 0, 0, 0);
 	peopleNumber: number = 216; //hard coded
 	boundaryLayerHeight: number = 629.35; //hard coded
-	meteoData = new MeteoData(0, 0, 0);
+	model = new AirQuality(new Date(), '5611', this.peopleNumber, new MeteoData(0, 0, 0, this.boundaryLayerHeight));
 
 	constructor(public dialog: MatDialog,
 		private appService: AppService,
@@ -112,13 +111,23 @@ export class AirQualityPredictionCardComponent {
 		private weatherService: WeatherService) { }
 
 	ngOnInit(): void {
+		// initialize fields with weather data using current date
+		this.loadWeatherData();
 	}
 
-	loadWeatherData(event) {
-		var formattedDate: string | null = this.datePipe.transform(event.value, 'yyyy-MM-dd')
+	loadWeatherData(event?) {
+		var date = new Date();
+		if (event) {
+			date = event.value;
+		}
+
+		var formattedDate: string | null = this.datePipe.transform(date, 'yyyy-MM-dd')
+		console.log(formattedDate)
 		this.weatherService.LoadWeatherAPI(formattedDate).subscribe(
 			res => {
-				this.meteoData = new MeteoData(res.daily.windspeed_10m_max, res.daily.winddirection_10m_dominant, res.daily.shortwave_radiation_sum);
+				console.log(res.daily)
+				var meteoData = new MeteoData(res.daily.windspeed_10m_max[0], res.daily.winddirection_10m_dominant[0], res.daily.shortwave_radiation_sum[0], this.boundaryLayerHeight);
+				this.model.meteoData = meteoData;
 			})
 	}
 
@@ -138,7 +147,6 @@ export class AirQualityPredictionCardComponent {
 	}
 
 	getPrediction(form: NgForm) {
-		//airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
 		//var airQualityLevel = 'Good';
 		//var airQualityLevelNumerical = 7.9;
 		var formattedDate: string | null = this.datePipe.transform(this.model.date, 'yyyy-MM-dd');
@@ -164,7 +172,9 @@ export class AirQualityPredictionCardComponent {
 					this.showSpinner = false;
 
 					// reset form
-					form.reset();
+					//form.reset();
+					this.loadWeatherData();
+					this.model.date = new Date();
 
 					console.log('Completed');
 				}
