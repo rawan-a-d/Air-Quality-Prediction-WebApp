@@ -1,12 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
 import { AirQualityPredictionDialog } from '../air-quality-prediction-dialog/air-quality-prediction-dialog.component';
 import { AirQuality } from '../models/AirQuality';
 import { AirQualityPrediction } from '../models/AirQualityPrediction';
 import { MeteoData } from '../models/MeteoData';
+import { ZipCode } from '../models/ZipCode';
 import { AppService } from '../services/app.service';
 import { WeatherService } from '../services/weather.service';
 
@@ -23,12 +23,6 @@ export interface DialogData {
 //   DateRange,
 //   MAT_DATE_RANGE_SELECTION_STRATEGY,
 // } from '@angular/material/datepicker';
-
-//should be moved to interface folder later
-interface ZipCode {
-	value: string;
-	viewValue: string;
-}
 
 //@Injectable()
 // Could be removed to a class folder

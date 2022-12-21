@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class WeatherService {
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
-  LoadWeatherAPI(date: string | null): Observable<any> {
-    return this.http.get("https://api.open-meteo.com/v1/forecast?latitude=51.44&longitude=5.48&hourly=temperature_2m&daily=windspeed_10m_max,winddirection_10m_dominant,shortwave_radiation_sum&timezone=Europe%2FBerlin&start_date="+ date +"&end_date="+ date);
-  }
+	LoadWeatherAPI(date: string | null): Observable<any> {
+		return this.http.get("https://api.open-meteo.com/v1/forecast?latitude=51.44&longitude=5.48&hourly=temperature_2m&daily=windspeed_10m_max,winddirection_10m_dominant,shortwave_radiation_sum&timezone=Europe%2FBerlin&start_date=" + date + "&end_date=" + date);
+	}
 }
