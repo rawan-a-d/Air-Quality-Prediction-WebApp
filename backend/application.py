@@ -1,10 +1,12 @@
 # setup flask
+from air_quality_prediction_helper import AirQualityPredictionHelper
 from flask import Flask, Response
 import pickle
 from flask_cors import CORS
 import re
 from flask import request
 from graph_helper import GraphHelper
+from datetime import datetime, date
 
 # as per recommendation from @freylis, compile once only
 CLEANR = re.compile('<.*?>') 
@@ -15,11 +17,11 @@ CORS(app)
 # graph helper instance
 graph_helper = GraphHelper()
 
-#loaded_model = pickle.load(open('air_quality_predictor.pkl', 'rb'))
+loaded_model = pickle.load(open('model/gbr_air_quality_prediction_model.pkl', 'rb'))
 
 @app.route('/')
 def index():
-	date = request.args.get('date')
+	providedDate = request.args.get('date')
 	zipcode = request.args.get('zipcode')
 	people_number = request.args.get('peopleNumber')
 	wind_speed = request.args.get('windSpeed')
@@ -27,12 +29,23 @@ def index():
 	sun_radiation = request.args.get('sunRadiation')
 	boundary_layer_height = request.args.get('boundaryLayerHeight')
 
+	# format date
+	formattedDate = datetime.strptime(providedDate, "%Y-%m-%d")
+
+	# extract date info
+	year = formattedDate.year
+	month = formattedDate.month
+	day = formattedDate.day
+	day_of_week = formattedDate.weekday()
+	day_of_year =  date(year, month, day).timetuple().tm_yday
+
 	# use model to predict
-	#result = loaded_model.predict(date, zipcode, people_number, wind_speed, wind_direction, sun_radiation, boundary_layer_height)[0] == 0
-	result = ''
+	result = loaded_model.predict([[zipcode, people_number, wind_direction, wind_speed, sun_radiation, boundary_layer_height, year, month, day, day_of_week, day_of_year]])[0]
 
-	return {'date': date, 'zipcode': zipcode}
+	# round to 2 decimal places
+	resultRounded = round(result, 2)
 
+	return AirQualityPredictionHelper.get_air_quality_level(resultRounded)
 
 
 @app.route('/map')
