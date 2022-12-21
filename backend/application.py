@@ -42,8 +42,10 @@ def index():
 	# use model to predict
 	result = loaded_model.predict([[zipcode, people_number, wind_direction, wind_speed, sun_radiation, boundary_layer_height, year, month, day, day_of_week, day_of_year]])[0]
 
-	return AirQualityPredictionHelper.get_air_quality_level(result)
+	# round to 2 decimal places
+	resultRounded = round(result, 2)
 
+	return AirQualityPredictionHelper.get_air_quality_level(resultRounded)
 
 
 @app.route('/map')

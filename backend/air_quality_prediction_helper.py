@@ -8,7 +8,7 @@ class AirQualityPredictionHelper:
 		elif (numerical_air_quality_level > 12) & (numerical_air_quality_level < 25):
 			air_quality_level_category = 'Moderate'
 		elif (numerical_air_quality_level > 25) & (numerical_air_quality_level < 55):
-			air_quality_level_category = 'Unhealthy for sensitive groups'
+			air_quality_level_category = 'Unhealthy for Sensitive Groups'
 		elif (numerical_air_quality_level > 55) & (numerical_air_quality_level < 150):
 			air_quality_level_category = 'Unhealthy'
 		elif (numerical_air_quality_level > 150) & (numerical_air_quality_level < 250):
