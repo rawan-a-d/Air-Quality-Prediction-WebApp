@@ -24,6 +24,7 @@ class GraphHelper:
 
 		return df
 
+
 	# Get pollution vs people by area on a specific date
 	def get_pollution_vs_people_by_area(self, date):
 		df = self.dataframe
