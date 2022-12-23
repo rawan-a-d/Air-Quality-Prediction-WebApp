@@ -40,6 +40,6 @@ class GraphHelper:
 		df['PC4'] = df['PC4'].astype('str')
 
 		# rename pm2.5 and PC4 columns
-		df.rename(columns={'pm2.5': 'pollution', 'PC4': 'zipcode'}, inplace=True)
+		df.rename(columns={'pm2.5': 'pollution', 'PC4': 'zipcode', 'people_number': 'peopleNumber'}, inplace=True)
 
-		return df[['zipcode', 'date', 'lat', 'long', 'people_number', 'pollution']].to_dict('records')
+		return df[['zipcode', 'date', 'lat', 'long', 'peopleNumber', 'pollution']].to_dict('records')
