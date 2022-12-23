@@ -3,7 +3,7 @@
 	<!-- header -->
 	<mat-card-header class="title">
 		<mat-card-title>
-			<h2>Air Quality Weekly Prediction in Eindhoven</h2>
+			<h3>Air Quality Weekly Prediction in Eindhoven</h3>
 		</mat-card-title>
 	</mat-card-header>
 	<!-- content -->
@@ -12,14 +12,15 @@
 			<p>
 				<!-- date week picker -->
 				<mat-form-field appearance="fill">
-                    <mat-label>Date</mat-label>
-                    <mat-date-range-input [rangePicker]="picker">
-                      <input matStartDate #dateRangeStart>
-                      <input matEndDate #dateRangeEnd (dateChange)="loadWeeklyWeatherData(dateRangeStart, dateRangeEnd)">
-                    </mat-date-range-input>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
-                </mat-form-field>
+					<mat-label>Date</mat-label>
+					<mat-date-range-input [rangePicker]="picker">
+						<input matStartDate #dateRangeStart>
+						<input matEndDate #dateRangeEnd
+							(dateChange)="loadWeeklyWeatherData(dateRangeStart, dateRangeEnd)">
+					</mat-date-range-input>
+					<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-date-range-picker #picker></mat-date-range-picker>
+				</mat-form-field>
 			</p>
 
 			<p>

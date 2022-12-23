@@ -13,6 +13,7 @@
 /* card title */
 .title {
 	justify-content: center;
+	text-align: center;
 }
 
 /* form field */

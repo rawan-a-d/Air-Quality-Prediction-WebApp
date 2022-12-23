@@ -1,16 +1,16 @@
-import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { AppService } from '../services/app.service';
-import { ColorsService } from '../services/colors.service';
-import { MapItem } from '../models/MapItem';
-import { IgxGeographicMapComponent, IgxGeographicSymbolSeriesComponent } from 'igniteui-angular-maps';
-import { MarkerType } from 'igniteui-angular-charts';
-import { DatePipe } from '@angular/common';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import { AppService } from "../services/app.service";
+import { ColorsService } from "../services/colors.service";
+import { MapItem } from "../models/MapItem";
+import { IgxGeographicMapComponent, IgxGeographicSymbolSeriesComponent } from "igniteui-angular-maps";
+import { MarkerType } from "igniteui-angular-charts";
+import { DatePipe } from "@angular/common";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
-	selector: 'app-map',
-	templateUrl: './map.component.html',
-	styleUrls: ['./map.component.css']
+	selector: "app-map",
+	templateUrl: "./map.component.html",
+	styleUrls: ["./map.component.css"]
 })
 export class MapComponent implements OnInit {
 	@ViewChild("map")
@@ -19,7 +19,7 @@ export class MapComponent implements OnInit {
 	@ViewChild("cityTooltipTemplate")
 	public cityTooltip: TemplateRef<object>;
 
-	@ViewChild('canvas')
+	@ViewChild("canvas")
 	public canvas: ElementRef<HTMLCanvasElement>;
 
 	mapItems: MapItem[] = [];
@@ -44,7 +44,6 @@ export class MapComponent implements OnInit {
 			.subscribe({
 				next: (data) => {
 					this.mapItems = <MapItem[]>data;
-					console.log(this.mapItems);
 
 					this.setUpMap();
 				},
@@ -82,8 +81,8 @@ export class MapComponent implements OnInit {
 		this.mapItems.forEach(element => {
 			// set color
 			var colorPercentage = this.normalizeDataBetweenRange(min, max, element.pollution, 1);
-			var colors = this.colorsService.evaluate_cmap(colorPercentage, 'plasma', true);
-			var colorRgb = 'rgb(' + colors[0] + ',' + colors[1] + ',' + colors[2] + ')';
+			var colors = this.colorsService.evaluate_cmap(colorPercentage, "plasma", true);
+			var colorRgb = "rgb(" + colors[0] + "," + colors[1] + "," + colors[2] + ")";
 
 			// set size (between 0 and 10)
 			var size = this.normalizeDataBetweenRange(min, max, element.pollution, 10);
@@ -98,7 +97,7 @@ export class MapComponent implements OnInit {
 			let r = color[0];
 			let g = color[1];
 			let b = color[2];
-			ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+			ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
 			//ctx.fillRect(x * this.canvas.nativeElement.width / 256, 0, this.canvas.nativeElement.width / 256, this.canvas.nativeElement.height);
 			ctx.fillRect(0, x * this.canvas.nativeElement.height / 256, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
 		}
@@ -131,7 +130,7 @@ export class MapComponent implements OnInit {
 		this.clearMap();
 
 		// get selected date
-		this.selectedDate = this.datePipe.transform(event.value, 'yyyy-MM-dd');
+		this.selectedDate = this.datePipe.transform(event.value, "yyyy-MM-dd");
 
 		this.getMapItems(this.selectedDate);
 	}
