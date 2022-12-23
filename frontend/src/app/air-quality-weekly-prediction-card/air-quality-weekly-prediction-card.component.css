@@ -1,0 +1,47 @@
+/* Card */
+.main-card {
+	width: 40%;
+	margin: 25px auto;
+}
+
+/* add shadow to the card */
+.main-card:not([class*="mat-elevation-z"]) {
+	box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1),
+		0 1px 3px 0 rgba(0, 0, 0, 1);
+}
+
+/* card title */
+.title {
+	justify-content: center;
+}
+
+/* form field */
+mat-form-field {
+	width: 80%;
+	margin: 0 10%;
+}
+
+/* inputs field number style */
+input.field-number::-webkit-outer-spin-button,
+input.field-number::-webkit-inner-spin-button {
+	display: none;
+}
+
+input.field-number {
+	-moz-appearance: textfield;
+}
+
+/* predict button style */
+button {
+	margin: 0 10%;
+}
+
+/* Spinner */
+.spinner {
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}

@@ -1,14 +1,20 @@
-import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { AirQualityPredictionDialog } from '../air-quality-prediction-dialog/air-quality-prediction-dialog.component';
-import { AirQuality } from '../models/AirQuality';
-import { AirQualityPrediction } from '../models/AirQualityPrediction';
-import { MeteoData } from '../models/MeteoData';
+import { MeteoData } from './../models/MeteoData';
+import { Component, Injectable } from '@angular/core';
 import { ZipCode } from '../models/ZipCode';
+import { DateAdapter } from '@angular/material/core';
+import {
+	MatDateRangeSelectionStrategy,
+	DateRange,
+	MAT_DATE_RANGE_SELECTION_STRATEGY,
+} from '@angular/material/datepicker';
+import { AirQuality } from '../models/AirQuality';
+import { MatDialog } from '@angular/material/dialog';
 import { AppService } from '../services/app.service';
+import { DatePipe } from '@angular/common';
 import { WeatherService } from '../services/weather.service';
+import { AirQualityPredictionDialog } from '../air-quality-prediction-dialog/air-quality-prediction-dialog.component';
+import { AirQualityPrediction } from '../models/AirQualityPrediction';
+import { NgForm } from '@angular/forms';
 
 export interface DialogData {
 	airQualityLevel: 'Good' | 'Moderate' | 'Unhealthy for Sensitive Groups' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
@@ -17,12 +23,45 @@ export interface DialogData {
 	date: '';
 }
 
+@Injectable()
+export class FiveDayRangeSelectionStrategy implements MatDateRangeSelectionStrategy<string> {
+	constructor() { }
+
+	selectionFinished(date: string | null): DateRange<string> {
+		return this._createFiveDayRange(date);
+	}
+
+	createPreview(activeDate: string | null): DateRange<string> {
+		return this._createFiveDayRange(activeDate);
+	}
+
+	private _createFiveDayRange(date: string | null): DateRange<any> {
+		if (date) {
+			const d = new Date(date)
+			const day = d.getDay();
+			const diff = d.getDate() - day + (day == 0 ? -6 : 1);
+			const start = new Date(d.setDate(diff));
+			const end = new Date(d.setDate(diff + 6));
+			return new DateRange<any>(start, end);
+		}
+
+		return new DateRange<string>(null, null);
+	}
+}
+
 @Component({
-	selector: 'app-air-quality-prediction-card',
-	templateUrl: './air-quality-prediction-card.component.html',
-	styleUrls: ['./air-quality-prediction-card.component.css']
+	selector: 'app-air-quality-weekly-prediction-card',
+	templateUrl: './air-quality-weekly-prediction-card.component.html',
+	styleUrls: ['./air-quality-weekly-prediction-card.component.css'],
+	providers: [
+		{
+			provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
+			useClass: FiveDayRangeSelectionStrategy,
+		},
+	],
 })
-export class AirQualityPredictionCardComponent {
+
+export class AirQualityWeeklyPredictionCardComponent {
 	showSpinner = false;
 
 	zipcodes: ZipCode[] = [
@@ -72,22 +111,41 @@ export class AirQualityPredictionCardComponent {
 
 	ngOnInit(): void {
 		// initialize fields with weather data using current date
-		this.loadWeatherData();
+		this.loadWeeklyWeatherData();
 	}
 
-	loadWeatherData(event?) {
-		var date = new Date();
-		if (event) {
-			date = event.value;
-		}
+	// load weekly weather data based on start and end date range
+	loadWeeklyWeatherData(startDate?, endDate?) {		
 
-		var formattedDate: string | null = this.datePipe.transform(date, 'yyyy-MM-dd')
-		this.weatherService.LoadWeatherAPI(formattedDate).subscribe(
+		var start: string;
+		var end: string;
+
+		if (startDate && endDate) {
+			start =  this.datePipe.transform(startDate.value, 'yyyy-MM-dd');
+			end = this.datePipe.transform(endDate.value, 'yyyy-MM-dd');
+		}
+		else {
+			var fiveDayRangeSelectionStrategy = new FiveDayRangeSelectionStrategy();		
+
+			var currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+			var dateRange = fiveDayRangeSelectionStrategy.createPreview(currentDate);
+
+			start = this.datePipe.transform(dateRange.start, 'yyyy-MM-dd');
+			end = this.datePipe.transform(dateRange.end, 'yyyy-MM-dd');
+		}
+		
+
+		this.weatherService.LoadWeatherAPI(start, end).subscribe(
 			res => {
-				console.log(res.daily)
-				var meteoData = new MeteoData(res.daily.windspeed_10m_max[0], res.daily.winddirection_10m_dominant[0], res.daily.shortwave_radiation_sum[0], this.boundaryLayerHeight);
+				const average = arr => arr.reduce((p, c) => p + c, 0) / arr.length;
+
+				var meteoData = new MeteoData(average(res.daily.windspeed_10m_max),
+					average(res.daily.winddirection_10m_dominant),
+					average(res.daily.shortwave_radiation_sum),
+					this.boundaryLayerHeight);
 				this.model.meteoData = meteoData;
 			})
+
 	}
 
 	openDialog(airQualityLevel: string, airQualityLevelNumerical: number) {
@@ -116,7 +174,7 @@ export class AirQualityPredictionCardComponent {
 		//this.openDialog(airQualityLevel, airQualityLevelNumerical);
 
 		// get prediction
-		this.appService.getPrediction(this.model, formattedDate, 'daily')
+		this.appService.getPrediction(this.model, formattedDate, 'weekly')
 			.subscribe({
 				next: (data: AirQualityPrediction) => {
 					console.log(data);
@@ -132,11 +190,12 @@ export class AirQualityPredictionCardComponent {
 
 					// reset form
 					//form.reset();
-					this.loadWeatherData();
-					this.model.date = new Date();
+					this.loadWeeklyWeatherData();
+					// this.model.date = new Date();
 
 					console.log('Completed');
 				}
 			})
 	}
+
 }

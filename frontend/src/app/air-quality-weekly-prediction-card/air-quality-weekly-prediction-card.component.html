@@ -3,21 +3,23 @@
 	<!-- header -->
 	<mat-card-header class="title">
 		<mat-card-title>
-			<h2>Air Quality Daily Prediction in Eindhoven</h2>
+			<h2>Air Quality Weekly Prediction in Eindhoven</h2>
 		</mat-card-title>
 	</mat-card-header>
 	<!-- content -->
 	<mat-card-content class="card-content">
 		<form #form="ngForm">
 			<p>
-				<!-- date picker -->
+				<!-- date week picker -->
 				<mat-form-field appearance="fill">
-					<mat-label>Date</mat-label>
-					<input matInput [matDatepicker]="picker" [(ngModel)]="model.date" name="date"
-						(dateChange)="loadWeatherData($event)">
-					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-					<mat-datepicker #picker></mat-datepicker>
-				</mat-form-field>
+                    <mat-label>Date</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input matStartDate #dateRangeStart>
+                      <input matEndDate #dateRangeEnd (dateChange)="loadWeeklyWeatherData(dateRangeStart, dateRangeEnd)">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
 			</p>
 
 			<p>

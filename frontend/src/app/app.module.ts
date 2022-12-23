@@ -23,13 +23,15 @@ import { MapComponent } from "./map/map.component";
 import { IgxDataChartInteractivityModule } from "igniteui-angular-charts";
 import { IgxGeographicMapModule } from "igniteui-angular-maps";
 import { AirQualityPredictionCardComponent } from './air-quality-prediction-card/air-quality-prediction-card.component';
+import { AirQualityWeeklyPredictionCardComponent } from './air-quality-weekly-prediction-card/air-quality-weekly-prediction-card.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		AirQualityPredictionDialog,
 		MapComponent,
-		AirQualityPredictionCardComponent
+		AirQualityPredictionCardComponent,
+  AirQualityWeeklyPredictionCardComponent,
 	],
 	imports: [
 		BrowserModule,

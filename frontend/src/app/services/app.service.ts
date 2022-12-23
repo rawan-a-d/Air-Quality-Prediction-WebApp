@@ -10,8 +10,8 @@ export class AppService {
 	url: string = "http://127.0.0.1:5000"
 	constructor(private httpClient: HttpClient) { }
 
-	getPrediction(airQuality: AirQuality, formattedDate: string | null) {
-		return this.httpClient.get(`${this.url}?date=${formattedDate}&zipcode=${airQuality.zipcode}&peopleNumber=${airQuality.peopleNumber}&windSpeed=${airQuality.meteoData.windSpeed}&windDirection=${airQuality.meteoData.windDirection}&sunRadiation=${airQuality.meteoData.sunRadiation}&boundaryLayerHeight=${airQuality.meteoData.boundaryLayerHeight}`)
+	getPrediction(airQuality: AirQuality, formattedDate: string | null, type: string) {
+		return this.httpClient.get(`${this.url}?type=${type}&date=${formattedDate}&zipcode=${airQuality.zipcode}&peopleNumber=${airQuality.peopleNumber}&windSpeed=${airQuality.meteoData.windSpeed}&windDirection=${airQuality.meteoData.windDirection}&sunRadiation=${airQuality.meteoData.sunRadiation}&boundaryLayerHeight=${airQuality.meteoData.boundaryLayerHeight}`)
 			.pipe(
 				map(
 					response => response
