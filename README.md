@@ -11,7 +11,7 @@ To predict air quality, we make use of trained AI models ([Air Quality Predictio
 
 ![daily_card](https://user-images.githubusercontent.com/27498593/210893758-4bcaa362-73a8-4fbc-868c-4b0ebe4c293a.png =250x)
 
-![weekly_card](https://user-images.githubusercontent.com/27498593/210893748-8d4a7a11-2c34-4d82-8350-bf3e3cb6204b.png)
+![weekly_card](https://user-images.githubusercontent.com/27498593/210893748-8d4a7a11-2c34-4d82-8350-bf3e3cb6204b.png){ width=50% }
 
 ![daily_predection_good](https://user-images.githubusercontent.com/27498593/210893760-60f8360d-4ac9-49d8-b060-2c4ece1a9dbc.PNG)
 
