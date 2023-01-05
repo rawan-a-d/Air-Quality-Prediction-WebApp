@@ -34,4 +34,4 @@ To predict air quality, we make use of trained AI models ([Air Quality Predictio
 <img src="https://user-images.githubusercontent.com/27498593/210893756-2b734b41-6d1a-4672-b9c1-b09b3bfc4093.PNG" width="900">
 
 <!-- ![map_v2](https://user-images.githubusercontent.com/27498593/210893746-515246ce-5b9e-4718-b69d-ee5622b91ae1.PNG) -->
-<img src="https://user-images.githubusercontent.com/27498593/210893746-515246ce-5b9e-4718-b69d-ee5622b91ae1.PNG" width="1000">
+<img src="https://user-images.githubusercontent.com/27498593/210893746-515246ce-5b9e-4718-b69d-ee5622b91ae1.PNG" width="900">
