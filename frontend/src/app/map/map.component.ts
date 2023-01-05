@@ -26,6 +26,9 @@ export class MapComponent implements OnInit {
 
 	selectedDate = "2021-09-25";
 
+	colorCanvasMaxMarker;
+	colorCanvasMinMarker;
+
 	constructor(private colorsService: ColorsService,
 		private appSerivce: AppService,
 		private datePipe: DatePipe,
@@ -76,6 +79,10 @@ export class MapComponent implements OnInit {
 		// get min and max pollution in the data
 		var min = Math.min(...this.mapItems.map(item => item.pollution));
 		var max = Math.max(...this.mapItems.map(item => item.pollution));
+
+		// set max and min markers
+		this.colorCanvasMaxMarker = max;
+		this.colorCanvasMinMarker = min;
 
 		// loop over zipcodes and display them
 		this.mapItems.forEach(element => {

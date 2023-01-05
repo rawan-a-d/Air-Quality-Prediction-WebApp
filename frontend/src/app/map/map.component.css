@@ -19,6 +19,11 @@
 	align-items: center;
 }
 
+/* map legend container */
+#map-legend-container {
+	position: relative;
+}
+
 /* map */
 #map {
 	width: 700px;
@@ -30,6 +35,7 @@
 	display: flex;
 	flex-direction: column;
 	margin-left: 10px;
+	position: relative;
 }
 
 canvas {
@@ -37,10 +43,30 @@ canvas {
 	height: 60vh;
 }
 
+.color-pointer {
+	position: absolute;
+	left: 29px;
+}
+
+.color-value {
+	position: absolute;
+	left: 38px;
+}
+
+#color-canvas-max-marker > #max-pointer,
+#color-canvas-max-marker > #max-value {
+	top: 64px;
+}
+
+#color-canvas-min-marker > #min-pointer,
+#color-canvas-min-marker > #min-value {
+	bottom: 20px;
+}
+
 /* Legend */
 .legend {
 	position: absolute;
-	left: 26%;
+	left: 12px;
 	bottom: 12px;
 	padding: 7px 10px 7px 10px;
 	background-color: rgba(0, 0, 0, 0.6);
