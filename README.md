@@ -8,7 +8,7 @@ The goal is to spread awareness about local air pollution to policy makers, so t
 
 To predict air quality, we make use of trained AI models ([Air Quality Prediction AI](https://github.com/rawan-a-d/Air-Quality-Prediction)).
 
-![daily_card](https://user-images.githubusercontent.com/27498593/210893758-4bcaa362-73a8-4fbc-868c-4b0ebe4c293a.png)
+![daily_card](https://user-images.githubusercontent.com/27498593/210893758-4bcaa362-73a8-4fbc-868c-4b0ebe4c293a.png width=300)
 ![weekly_card](https://user-images.githubusercontent.com/27498593/210893748-8d4a7a11-2c34-4d82-8350-bf3e3cb6204b.png)
 ![daily_predection_good](https://user-images.githubusercontent.com/27498593/210893760-60f8360d-4ac9-49d8-b060-2c4ece1a9dbc.PNG)
 ![daily_predection_moderate](https://user-images.githubusercontent.com/27498593/210893762-f15bae9a-d774-480e-bc13-ed4d41ce4a4a.PNG)
